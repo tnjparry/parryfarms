@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="author" content="Tara Parry">
+    <link rel="submit_form" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Algerian&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Algerian&display=swap" rel="stylesheet">
+    <title>About - Parry Farms LLC</title>
+    <style>
+    
+    body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh; /* Ensures the body takes up the full viewport height */
+  font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
+  background: linear-gradient(to bottom, #3a6209, #37a305); /* Gradient green background */
+  color: white; 
+}
+      header {
+        text-align: center;
+        padding: 20px;
+        background-color: rgba(0, 0, 0, 0.2); /* Optional: Adds a semi-transparent background to the header */
+      }
+
+      header h1 {
+        text-align: center;
+        font-family: 'algerian', sans-serif;
+        font-size: 36px;
+        margin: 20px 0;
+        color: white; /* Matches the navigation bar */
+      }
+/* Navigation bar styling */
+nav {
+  display: flex;
+  justify-content: center; /* Centers the navigation links */
+  background-color: #3a6209; /* Green background for the nav bar */
+  padding: 10px;
+}
+
+nav a {
+  text-decoration: none; /* Removes underline from links */
+  color: white; /* White text color */
+  padding: 10px 20px; /* Adds padding inside the links */
+  margin: 0 5px; /* Adds spacing between links */
+  border-radius: 5px; /* Rounds the corners of the links */
+  transition: background-color 0.3s ease; /* Smooth hover effect */
+}
+
+      p {
+        font-size: 24px;
+        line-height: 1.8;
+        text-align: center;
+      }
+
+      form {
+  width: 90%; /* Makes the form take up 90% of its container */
+  max-width: 800px; /* Sets a maximum width for the form */
+  margin: auto; /* Centers the form horizontally */
+  padding: 20px; /* Adds padding inside the form */
+  font-size: 18px; /* Adjusts the font size of the form text */
+}
+
+p {
+  width: 100%; /* Ensures the paragraph takes up the remaining space */
+  text-align: center; /* Aligns the text to the left */
+}
+
+.form-map-container {
+  display: flex; /* Enables flexbox layout */
+  justify-content: space-between; /* Adds space between the form and the map */
+  align-items: flex-start; /* Aligns the form and map at the top */
+  gap: 20px; /* Adds spacing between the form and the map */
+  margin: 20px auto; /* Centers the container horizontally */
+  max-width: 1200px; /* Limits the width of the container */
+}
+
+.form-container {
+  flex: 1; /* Allows the form to take up equal space */
+  max-width: 600px; /* Limits the width of the form */
+}
+
+.map-container {
+  flex: 1; /* Allows the map to take up equal space */
+  max-width: 600px; /* Limits the width of the map */
+}
+
+.map-container iframe {
+  width: 100%; /* Makes the map responsive */
+  border: 1px solid #ccc; /* Adds a border around the map */
+  border-radius: 10px; /* Rounds the corners of the map */
+}
+
+.map-container h2 {
+  text-align: center; /* Centers the heading text */
+  margin-bottom: 10px; /* Adds spacing between the heading and the map */
+  font-size: 24px; /* Adjusts the font size of the heading */
+  color: white; /* Ensures the heading matches the site's color scheme */
+}
+    </style>
+  </head>
+  <body>
+    <header>
+        <nav>
+            <a href="parryfarms.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="TheHerd.html">The Herd</a>
+            <a href="TheProducts.html">The Products</a>
+            <a href="Information.html">Information</a>
+            <a href="Contact.html">Contact</a>
+          </nav>
+      <h1>Contact Us!</h1>
+    </header>
+
+    <div class="form-map-container">
+      <div class="form-container">
+        <h4>
+            Please use the form below to contact us with any questions, and to let us know if you would like to make a purchase. Thank you for visiting our site! <br>
+        </h4>
+        <form action="submit_form.php" method="post">
+          <label for="name">Name:</label><br>
+          <input type="text" id="name" name="name" required><br><br>
+    
+          <label for="email">Email:</label><br>
+          <input type="email" id="email" name="email" required><br><br>
+    
+          <label for="phone">Phone Number:</label><br>
+          <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" placeholder="1234567890" required><br><br>
+    
+          <label for="message">Message:</label><br>
+          <textarea id="message" name="message" rows="4" required></textarea><br><br>
+    
+          <label>
+            <input type="checkbox" name="subscribe" value="yes">
+            Subscribe to email notices about new products and sales.
+          </label><br><br>
+
+          <label>
+            <input type="checkbox" name="subscribe" value="yes">
+            Check if you would like a free sample of our soaps. ($5 mailing fee)
+          </label><br><br>
+    
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+    
+      <div class="map-container">
+        <h2>Our Location</h2>
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d43866.736292804984!2d-112.05069553210183!3d46.593740605146465!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5343510fedc7db4d%3A0x214c1d71e3fdf714!2sHelena%2C%20MT!5e0!3m2!1sen!2sus!4v1746032764070!5m2!1sen!2sus"
+          width="100"
+          height="400"
+          style="border:0;"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div>
+    <footer>
+      <p>&copy; 2025 Parry Farms LLC. All rights reserved.</p>
+      <p>Website by Tara Parry</p>
+    </footer>
+
+  </body>
+</html>
+<!-- </html> -->  

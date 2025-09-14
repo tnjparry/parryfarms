@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="author" content="Tara Parry">
+    <title>Information</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Algerian&display=swap">
+    
+   <style>
+
+body {
+  flex: 1; /* Allows the body to grow and fill the available space */
+}
+      /* Navigation bar styling */
+      nav {
+        display: flex;
+        justify-content: center; /* Centers the navigation links */
+        background-color: #3a6209; /* Green background for the nav bar */
+        padding: 10px;
+      }
+      
+      nav a {
+        text-decoration: none; /* Removes underline from links */
+        color: white; /* White text color */
+        padding: 10px 20px; /* Adds padding inside the links */
+        margin: 0 5px; /* Adds spacing between links */
+        border-radius: 5px; /* Rounds the corners of the links */
+        transition: background-color 0.3s ease; /* Smooth hover effect */
+      }
+
+  html, body {
+    height: 100%; /* Ensures the body takes up the full height of the viewport */
+    margin: 0; /* Removes default margin */
+    display: flex; /* Enables flexbox layout */
+    flex-direction: column; /* Stacks header, content, and footer vertically */
+}
+
+body {
+  flex: 1; /* Allows the body to grow and fill the available space */
+}
+
+.box-container {
+  flex: 1;
+  display: flex; /* Enables flexbox layout */
+  justify-content: center; /* Centers the boxes horizontally */
+  align-items: stretch; /* Aligns the boxes at the top */
+  gap: 20px; /* Adds spacing between the boxes */
+  padding: 20px;
+  max-width: 12000px; /* limits the width of the container */
+  margin: 0 auto; /* Centers the container on the page */  
+}
+
+.box {
+  width: 45%; /* Each box takes up 50% of the container width */
+  padding: 20px;
+  background: linear-gradient(to bottom, #3a6209, #37a305); /* Gradient background */
+  border: 1px solid #ccc; /* Adds a border around the box */
+  border-radius: 10px; /* Rounds the corners */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Adds a subtle shadow */
+  text-align: center; /* Centers the text inside the box */
+  overflow: hidden;
+}
+
+.columns {
+  display: flex; /* Enables flexbox layout */
+  justify-content: space-between; /* Adds space between the two columns */
+  gap: 20px; /* Adds spacing between the columns */
+}
+
+.columns ul {
+  list-style-type: disc; /* Adds bullet points to the list */
+  padding-left: 20px; /* Adds spacing to the left of the list */
+  text-align: left; /* Aligns the list items to the left */
+}
+
+.columns ul li {
+  margin-bottom: 10px; /* Adds spacing between list items */
+  font-size: 16px; /* Adjusts the font size of the list items */
+  color: black; /* Sets the text color */
+}
+
+footer {
+  margin-top: auto; /* Pushes the footer to the bottom of the page */
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.2);; /* Matches the navigation bar */
+  padding: 10px;
+}
+ </style>
+     
+      </head>
+      
+      <body>
+        <header>
+        <nav>
+          <a href="ParryFarms.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="TheHerd.html">The Herd</a>
+          <a href="TheProducts.html">The Products</a>
+          <a href="Information.html">Information</a>
+          <a href="Contact.html">Contact</a>
+        </nav>
+    
+          <h1>Information</h1>
+        </header>
+        <div class="box-container">
+          <div class="box left-box">
+           <div class="columns">
+            <h3>Items Currently For Sale</h3>
+              <ul>
+                <li>Sheep Milk Soap</li>
+                <li>Sheep Milk Lotion</li>
+                <li>Linen Spray</li>
+                <li>Natural Scrubs</li>
+                <li>Lotion Bars</li>
+                <li>Soap Savers</li>
+                <li>Soap Dishes</li>
+              </ul>
+              <h3>Items Coming Soon</h3>
+              <ul>
+                <li>Goat Milk Lotion</li>
+                <li>Goat Milk Soap</li>
+                <li>Handmade Candles</li>
+                <li>Fresh Goat Milk</li>
+              </ul>
+              </div>
+          </div>
+          <div class="box right-box">
+            <h3>Pricing Information</h3>
+            <table>
+              <thead>
+                <tr>
+                  <th>Product</th>
+                  <th>Price</th>
+                  <th>Availability</th>
+                </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                  <td>Sheep Milk Soap 5oz.</td>
+                  <td>$5.00</td>
+                  <td>In Stock</td>
+                </tr>
+                <tr>
+                  <td>Sheep Milk Soap 8oz.</td>
+                  <td>$8.00</td>
+                  <td>In Stock</td>
+                </tr>
+                <tr>
+                  <td>Sheep Milk Lotion 3.5oz.</td>
+                  <td>$6.00</td>
+                  <td>In Stock</td>
+                </tr>
+                <tr>
+                  <td>Sheep Milk Lotion 8oz.</td>
+                  <td>$10.00</td>
+                  <td>In Stock</td>
+                </tr>
+                <tr>
+                  <td>Linen Spray</td>
+                  <td>$8.00</td>
+                  <td>Out of Stock</td>
+                </tr>
+                 <tr>
+                  <td>Body Spray</td>
+                  <td>$8.00</td>
+                  <td>Out of Stock</td>
+                </tr>
+                <tr>
+                  <td>Lotion Bar 6oz.</td>
+                  <td>$8.00</td>
+                  <td>In Stock</td>
+                </tr>
+                <tr>
+                  <td>Soap Saver or Dish</td>
+                  <td>$5.00</td>
+                  <td>In Stock</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+  <footer>
+     <p>&copy; 2025 Parry Farms LLC. All rights reserved.</p>
+      <p>Website by Tara Parry</p>
+      </footer>
+    </body>
+</html>

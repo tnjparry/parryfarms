@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+
+    /* Navigation bar styling */
+nav {
+  display: flex;
+  justify-content: center; /* Centers the navigation links */
+  background-color: #3a6209; /* Green background for the nav bar */
+  padding: 10px;
+}
+
+nav a {
+  text-decoration: none; /* Removes underline from links */
+  color: white; /* White text color */
+  padding: 10px 20px; /* Adds padding inside the links */
+  margin: 0 5px; /* Adds spacing between links */
+  border-radius: 5px; /* Rounds the corners of the links */
+  transition: background-color 0.3s ease; /* Smooth hover effect */
+}
+
+  footer {
+  margin-top: auto; /* Pushes the footer to the bottom of the page */
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.2);; /* Matches the navigation bar */
+  padding: 10px;
+}
+    .shop { text-align: center; margin: 20px auto; }
+    .product {
+      display: inline-block;
+      text-align: center;
+      margin: 20px;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      background-color: #f9f9f9;
+      width: 250px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      vertical-align: top;
+    }
+    .product img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 15px;
+      background: #eee;
+    }
+    .product h3 { font-size: 18px; margin-bottom: 10px; color: #3a6209; }
+    .product p { font-size: 16px; margin-bottom: 15px; color: #555; }
+    .buy-button {
+      background-color: #3a6209;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+      margin-bottom: 5px;
+    }
+    .buy-button:hover { background-color: #2e4f07; }
+    .venmo-button { background-color: #3d95ce; }
+    .venmo-button:hover { background-color: #1b5e85; }
+    #cart {
+      max-width: 500px;
+      margin: 30px auto;
+      background: #fff;
+      border: 2px solid #3a6209;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+      text-align: left;
+    }
+    #cart h2 { color: #3a6209; }
+    #cart table { width: 100%; margin-bottom: 15px; }
+    #cart th, #cart td { padding: 6px; text-align: center; }
+    #cart-total { font-weight: bold; }
+    .cart-actions { text-align: right; }
+    .remove-btn {
+      background: #c0392b;
+      color: #fff;
+      border: none;
+      border-radius: 3px;
+      padding: 2px 8px;
+      cursor: pointer;
+    }
+    .remove-btn:hover { background: #a93226; }
+  </style>
+</head>
+<body>
+
+  <body>
+  <!-- Navigation Bar -->
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="Shop.html">Shop</a>
+    <a href="theherd.html">The Herd</a>
+    <a href="about.html">About Us</a>
+    <a href="products.html">Products</a>
+    <a href="contact.html">Contact Us</a>
+  </nav>
+
+  <div class="shop">
+    <!-- Example Product 1 -->
+    <div class="product">
+      <img src="images/soap1.jpg" alt="Sheep Milk Soap" class="product-image">
+      <h3>Sheep Milk Soap</h3>
+      <p>Price: $5.00</p>
+      <div style="margin-bottom:10px;">
+        <label for="qty-soap1">Quantity:</label>
+        <select id="qty-soap1">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+        <label for="size-soap1" style="margin-left:10px;">Size:</label>
+        <select id="size-soap1">
+          <option value="Small">Small</option>
+          <option value="Medium">Medium</option>
+          <option value="Large">Large</option>
+        </select>
+      </div>
+      <button class="buy-button" onclick="addToCart('Sheep Milk Soap', 5.00, document.getElementById('size-soap1').value, document.getElementById('qty-soap1').value)">Add to Cart</button>
+    </div>
+    <!-- Example Product 2 -->
+    <div class="product">
+      <img src="images/soap2.jpg" alt="Lavender Soap" class="product-image">
+      <h3>Lavender Soap</h3>
+      <p>Price: $6.00</p>
+      <div style="margin-bottom:10px;">
+        <label for="qty-soap2">Quantity:</label>
+        <select id="qty-soap2">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+        <label for="size-soap2" style="margin-left:10px;">Size:</label>
+        <select id="size-soap2">
+          <option value="Small">Small</option>
+          <option value="Medium">Medium</option>
+          <option value="Large">Large</option>
+        </select>
+      </div>
+      <button class="buy-button" onclick="addToCart('Lavender Soap', 6.00, document.getElementById('size-soap2').value, document.getElementById('qty-soap2').value)">Add to Cart</button>
+    </div>
+    <!-- Add more products as needed -->
+  </div>
+
+  <!-- Cart Section -->
+  <div id="cart" style="display:none;">
+    <h2>Your Cart</h2>
+    <table id="cart-table">
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Size</th>
+          <th>Qty</th>
+          <th>Price</th>
+          <th>Remove</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <div id="cart-total"></div>
+    <div class="cart-actions">
+      <!-- Payment Options -->
+      <form id="paypal-cart-form" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" style="display:inline;">
+        <input type="hidden" name="cmd" value="_cart">
+        <input type="hidden" name="upload" value="1">
+        <input type="hidden" name="business" value="tnjparry@yahoo.com">
+        <!-- Cart items will be added here by JS -->
+        <button type="submit" class="buy-button">Pay with PayPal</button>
+      </form>
+      <a href="https://venmo.com/YourVenmoUsername" target="_blank" class="buy-button venmo-button">Pay with Venmo</a>
+      <button type="button" class="buy-button" style="background-color:#888;" onclick="openCashModal()">Local Pickup (Cash Only)</button>
+    </div>
+    <div style="margin-top:10px; font-size:14px; color:#333;">
+      <strong>Contact:</strong> parryfarmsllc@yahoo.com<br>
+      <strong>Phone:</strong> (406) 594-1695
+    </div>
+  </div>
+
+  <!-- Cash at Pickup Modal -->
+  <div id="cashModal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.5); z-index:1000; align-items:center; justify-content:center;">
+    <div style="background:#fff; padding:30px; border-radius:10px; max-width:350px; margin:auto; position:relative;">
+      <button onclick="document.getElementById('cashModal').style.display='none'" style="position:absolute; top:10px; right:10px;">&times;</button>
+      <h3>Cash at Pickup</h3>
+      <form action="cash-order.php" method="post">
+        <div id="cash-cart-summary" style="font-size:14px; margin-bottom:10px;"></div>
+        <input type="hidden" name="cart" id="modal-cart-data">
+        <label for="name">Your Name:</label><br>
+        <input type="text" name="name" id="name" required><br>
+        <label for="email">Your Email:</label><br>
+        <input type="email" name="email" id="email" required><br>
+        <label for="phone">Your Phone:</label><br>
+        <input type="text" name="phone" id="phone" required><br>
+        <button type="submit" class="buy-button" style="margin-top:10px;">Send Order</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // Cart logic
+    let cart = [];
+
+    function addToCart(product, price, size, quantity) {
+      quantity = parseInt(quantity);
+      // Check if item with same product and size exists
+      let found = cart.find(item => item.product === product && item.size === size);
+      if (found) {
+        found.quantity += quantity;
+      } else {
+        cart.push({ product, price, size, quantity });
+      }
+      renderCart();
+    }
+
+    function removeFromCart(index) {
+      cart.splice(index, 1);
+      renderCart();
+    }
+
+    function renderCart() {
+      const cartDiv = document.getElementById('cart');
+      const tbody = document.querySelector('#cart-table tbody');
+      tbody.innerHTML = '';
+      let total = 0;
+      cart.forEach((item, idx) => {
+        let row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${item.product}</td>
+          <td>${item.size}</td>
+          <td>${item.quantity}</td>
+          <td>$${(item.price * item.quantity).toFixed(2)}</td>
+          <td><button class="remove-btn" onclick="removeFromCart(${idx})">&times;</button></td>
+        `;
+        tbody.appendChild(row);
+        total += item.price * item.quantity;
+      });
+      document.getElementById('cart-total').textContent = 'Total: $' + total.toFixed(2);
+      cartDiv.style.display = cart.length ? 'block' : 'none';
+
+      // Update PayPal cart form
+      const paypalForm = document.getElementById('paypal-cart-form');
+      // Remove old item fields
+      Array.from(paypalForm.querySelectorAll('input[name^="item_name"],input[name^="amount"],input[name^="quantity"]')).forEach(e => e.remove());
+      // Add new item fields
+      cart.forEach((item, i) => {
+        let idx = i + 1;
+        paypalForm.insertAdjacentHTML('beforeend', `
+          <input type="hidden" name="item_name_${idx}" value="${item.product} (${item.size})">
+          <input type="hidden" name="amount_${idx}" value="${item.price}">
+          <input type="hidden" name="quantity_${idx}" value="${item.quantity}">
+        `);
+      });
+    }
+
+    // Cash modal logic
+    function openCashModal() {
+      // Show cart summary in modal
+      let summary = '';
+      let total = 0;
+      cart.forEach(item => {
+        summary += `${item.product} (${item.size}) x${item.quantity} - $${(item.price * item.quantity).toFixed(2)}<br>`;
+        total += item.price * item.quantity;
+      });
+      summary += `<strong>Total: $${total.toFixed(2)}</strong>`;
+      document.getElementById('cash-cart-summary').innerHTML = summary;
+      document.getElementById('modal-cart-data').value = JSON.stringify(cart);
+      document.getElementById('cashModal').style.display = 'flex';
+    }
+  </script>
+
+  <footer>
+    <p>&copy; 2025 Parry Farms LLC. All rights reserved.</p>
+    <p>Website by Tara Parry</p>
+  </footer>
+
+  <!-- Add this script before </body> to manage inventory and update max quantity automatically -->
+<script>
+  // Example inventory for each product/size
+  const inventory = {
+    'Sheep Milk Soap': { Small: 3, Medium: 2, Large: 1 },
+    'Lavender Soap': { Small: 5, Medium: 3, Large: 2 }
+  };
+
+  // Update quantity dropdowns based on selected size and inventory
+  function updateQtyOptions(product, sizeSelectId, qtySelectId) {
+    const size = document.getElementById(sizeSelectId).value;
+    const qtySelect = document.getElementById(qtySelectId);
+    const maxQty = inventory[product][size];
+    qtySelect.innerHTML = '';
+    for (let i = 1; i <= maxQty; i++) {
+      qtySelect.innerHTML += `<option value="${i}">${i}</option>`;
+    }
+  }
+
+  // Initialize quantity dropdowns on page load and on size change
+  document.addEventListener('DOMContentLoaded', function() {
+    // For Sheep Milk Soap
+    updateQtyOptions('Sheep Milk Soap', 'size-soap1', 'qty-soap1');
+    document.getElementById('size-soap1').addEventListener('change', function() {
+      updateQtyOptions('Sheep Milk Soap', 'size-soap1', 'qty-soap1');
+    });
+    // For Lavender Soap
+    updateQtyOptions('Lavender Soap', 'size-soap2', 'qty-soap2');
+    document.getElementById('size-soap2').addEventListener('change', function() {
+      updateQtyOptions('Lavender Soap', 'size-soap2', 'qty-soap2');
+    });
+  });
+
+  // Update inventory and dropdown after adding to cart
+  function addToCart(product, price, size, quantity) {
+    quantity = parseInt(quantity);
+    if (inventory[product][size] < quantity) {
+      alert('Not enough stock available!');
+      return;
+    }
+    let found = cart.find(item => item.product === product && item.size === size);
+    if (found) {
+      if (inventory[product][size] < found.quantity + quantity) {
+        alert('Not enough stock available!');
+        return;
+      }
+      found.quantity += quantity;
+    } else {
+      cart.push({ product, price, size, quantity });
+    }
+    inventory[product][size] -= quantity;
+    renderCart();
+    // Update dropdowns
+    if (product === 'Sheep Milk Soap') updateQtyOptions(product, 'size-soap1', 'qty-soap1');
+    if (product === 'Lavender Soap') updateQtyOptions(product, 'size-soap2', 'qty-soap2');
+  }
+</script>
+
+</body>
+</html>

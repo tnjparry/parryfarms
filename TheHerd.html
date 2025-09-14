@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="author" content="Tara Parry">
+    <title>The Herd</title>
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+      body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh; /* Ensures the body takes up the full viewport height */
+  font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
+  background: linear-gradient(to bottom, #3a6209, #37a305); /* Gradient green background */
+  color: white; 
+}
+
+/* Header styling */
+
+header {
+        text-align: center;
+        padding: 20px;
+        background-color: rgba(0, 0, 0, 0.2); /* Optional: Adds a semi-transparent background to the header */
+      }
+
+header h1 {
+  text-align: center;
+  font-family: algerian, sans-serif; /* Sets the font to Algerian */  
+  font-size: 36px;
+  margin: 20px 0;
+  color: white; /* Matches the navigation bar */
+}
+
+.content {
+  display: grid; /* Enables grid layout */
+  grid-template-columns: repeat(4, 1fr); /* Creates 4 equal columns */
+  gap: 15px; /* Adds spacing between items */
+  padding: 0px;
+  margin-top: 40px;
+}
+
+.box {
+  text-align: center; /* Centers the text and image inside the box */
+  background-color: #3a6209;; /* Adds a semi-transparent white background */
+  border: 1px solid #ccc; /* Adds a border around the box */
+  border-radius: 10px; /* Rounds the corners of the box */
+  padding: 10px; /* Adds padding inside the box */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Adds a subtle shadow */
+  width: 200px; /* Sets a fixed width for all boxes */
+
+  display: flex;
+  flex-direction: column; /* Ensures content stacks vertically */
+  justify-content: space-between; /* Distributes content evenly */
+  align-items: center; /* Centers content horizontally */
+  margin: 0 auto; /* Centers the boxes within the grid */
+}
+
+img {
+  max-width: 100%; /* Ensures the image fits within the box */
+  height: auto; /* Maintains the aspect ratio */
+  border-radius: 10px; /* Adds rounded corners to the image */
+  margin-bottom: 10px; /* Adds spacing below the image */
+}
+
+h1 {
+  Color: white;
+}
+
+h3 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 20px; /* Adjusts the font size for headings */
+  color: white; 
+}
+
+p {
+  font-size: 14px; /* Adjusts the font size for descriptions */
+  color: white; 
+}
+
+/* Navigation bar styling */
+nav {
+  display: flex;
+  justify-content: center; /* Centers the navigation links */
+  background-color: #3a6209; /* Green background for the nav bar */
+  padding: 10px;
+}
+
+nav a {
+  text-decoration: none; /* Removes underline from links */
+  color: white; /* White text color */
+  padding: 10px 20px; /* Adds padding inside the links */
+  margin: 0 5px; /* Adds spacing between links */
+  border-radius: 5px; /* Rounds the corners of the links */
+  transition: background-color 0.3s ease; /* Smooth hover effect */
+}
+
+  footer {
+  margin-top: auto; /* Pushes the footer to the bottom of the page */
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.2);; /* Matches the navigation bar */
+  padding: 10px;
+}
+
+  </style>
+  </head>
+
+  <body>
+    <nav>
+      <a href="ParryFarms.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="TheHerd.html">The Herd</a>
+      <a href="TheProducts.html">The Products</a>
+      <a href="Information.html">Information</a>
+      <a href="Contact.html">Contact</a>
+    </nav>
+
+    <header>
+      <h1>Meet the Herd!</h1>
+    </header>
+
+    <div class="content">
+      <div class="box">
+        <img src="pictures/Alice1.jpg" alt="Alice, the oldest goat at Parry Farms">
+        <h3>Alice</h3>
+        <p>Alice is the oldest goat at Parry Farms and is full Pygmy.</p>
+      </div>
+    
+      <div class="box">
+        <img src="Pictures/Dolly.jpg" alt="Dolly, a pygmy goat with blue eyes">
+        <h3>Dolly</h3>
+        <p>Dolly is a pygmy goat with beautiful blue eyes and a friendly personality.</p>
+      </div>
+    
+      <div class="box">
+        <img src="pictures/Baby2.jpg" alt="Baby goats at Parry Farms">
+        <h3>Baby Goat 2</h3>
+        <p>One of the adorable baby goats at Parry Farms.</p>
+      </div>
+    
+      <div class="box">
+        <img src="pictures/Goober.jpg" alt="Goober is our newest buck. He’s a yearling and a beautiful boy, we are so lucky to have him!">
+        <h3>Goober</h3>
+        <p>Goober is our newest buck. He’s a yearling and a beautiful boy, we are so lucky to have him!</p>
+      </div>
+    
+      <div class="box">
+        <img src="pictures/Dot.jpg" alt="Dot, a calm and friendly ND goat">
+        <h3>Dot</h3>
+        <p>Dot is a beautiful ND, and is so calm! She’s one of our friendlier does.</p>
+      </div>
+    
+      <div class="box">
+        <img src="pictures/Marty.jpg" alt="Marty, our new wether">
+        <h3>Marty</h3>
+        <p>Marty is our new wether. He’s beautiful but a bit shy and a proven escape artist!</p>
+      </div>
+    
+      <div class="box">
+        <img src="pictures/Pepper.jpg" alt="Pepper, the daughter of Alice">
+        <h3>Pepper</h3>
+        <p>Pepper is the daughter of Alice. She is nearly a year and we are excited to see what kids she brings us!</p>
+      </div>
+
+      <div class="box">
+        <img src="pictures/billy.jpg" alt="Billy is our young buck">
+        <h3>Billy</h3>
+        <p>Billy is our young buck, born early 2024</p>
+      </div>
+    </div>
+    <footer>
+      <p>&copy; 2025 Parry Farms LLC. All rights reserved.</p>
+      <p>Website by Tara Parry</p>
+    </footer>
+  </body>
+</html>

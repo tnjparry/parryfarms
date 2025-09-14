@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animals</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .shop {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      text-align: center;
+      margin: 20px auto;
+    }
+    .product {
+      flex: 0 1 300px;
+      width: 300px;
+      height: 260px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      background-color: #f9f9f9;
+      margin: 10px;
+      padding: 20px;
+      position: relative;
+      cursor: pointer;
+      transition: box-shadow 0.2s;
+    }
+    .product:hover {
+      box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    }
+    .product img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 12px;
+      background: #eee;
+    }
+    .product h3 {
+      font-size: 20px;
+      margin-bottom: 0;
+      color: #3a6209;
+      word-break: break-word;
+    }
+    /* Fullscreen Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      left: 0; top: 0; width: 100vw; height: 100vh;
+      background: rgba(0,0,0,0.85);
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-content {
+      background: #fff;
+      border-radius: 10px;
+      padding: 40px 20px 30px 20px;
+      max-width: 900px;
+      width: 90vw;
+      min-height: 80vh;
+      margin: 0 auto;
+      position: relative;
+      text-align: center;
+      display: flex;
+      flex-direction: row;
+      gap: 40px;
+      align-items: flex-start;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+    }
+    .modal-images {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      align-items: center;
+      flex: 1 1 0;
+      max-width: 350px;
+    }
+    .modal-images img {
+      width: 100%;
+      max-width: 320px;
+      height: auto;
+      object-fit: cover;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    }
+    .modal-details {
+      flex: 2 1 0;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      gap: 18px;
+      min-width: 0;
+    }
+    .modal-details h3 {
+      font-size: 2rem;
+      margin-bottom: 0.5em;
+      color: #3a6209;
+    }
+    .modal-details p {
+      font-size: 1.1rem;
+      color: #444;
+      margin-bottom: 0.5em;
+    }
+    .modal-details .buy-button {
+      align-self: flex-start;
+      margin-top: 1em;
+    }
+    .close-modal {
+      position: absolute;
+      top: 18px; right: 24px;
+      font-size: 2.5rem;
+      background: none;
+      border: none;
+      color: #333;
+      cursor: pointer;
+      z-index: 10;
+    }
+    @media (max-width: 700px) {
+      .modal-content {
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px 5vw 20px 5vw;
+        min-height: unset;
+      }
+      .modal-images, .modal-details {
+        max-width: 100%;
+        width: 100%;
+      }
+      .modal-details .buy-button {
+        width: 100%;
+      }
+    }
+    .buy-button {
+      background-color: #3a6209;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+      margin-top: 10px;
+      width: 90%;
+      display: inline-block;
+      text-align: center;
+    }
+    .buy-button:hover { background-color: #2e4f07; }
+    .venmo-button {
+      background-color: #3d95ce;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+      margin-top: 10px;
+      width: 90%;
+      display: inline-block;
+      text-align: center;
+    }
+    .venmo-button:hover { background-color: #1b5e85; }
+    /* Cart Modal */
+    #cart-modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      background: rgba(0,0,0,0.5);
+      z-index: 3000;
+      align-items: center;
+      justify-content: center;
+    }
+    #cart {
+      background: #fff;
+      border-radius: 10px;
+      max-width: 500px;
+      width: 95vw;
+      margin: auto;
+      padding: 20px;
+      position: relative;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+      text-align: left;
+    }
+    #cart h2 { color: #3a6209; }
+    #cart table { width: 100%; margin-bottom: 15px; }
+    #cart th, #cart td { padding: 6px; text-align: center; }
+    #cart-total { font-weight: bold; }
+    .cart-actions { text-align: right; }
+    .remove-btn {
+      background: #c0392b;
+      color: #fff;
+      border: none;
+      border-radius: 3px;
+      padding: 2px 8px;
+      cursor: pointer;
+    }
+    .remove-btn:hover { background: #a93226; }
+    /* Cart Icon */
+    #cart-icon-btn {
+      position: fixed;
+      top: 20px;
+      right: 30px;
+      z-index: 3001;
+      font-size: 2rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+    #cart-count {
+      background: #c0392b;
+      color: #fff;
+      border-radius: 50%;
+      padding: 2px 8px;
+      font-size: 1rem;
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      display: none;
+    }
+    /* Lightbox overlay for enlarged images */
+    #lightbox-overlay {
+      display: none;
+      position: fixed;
+      z-index: 4000;
+      left: 0; top: 0; width: 100vw; height: 100vh;
+      background: rgba(0,0,0,0.8);
+      align-items: center;
+      justify-content: center;
+    }
+    #lightbox-overlay img {
+      max-width: 90vw;
+      max-height: 90vh;
+      border-radius: 12px;
+      box-shadow: 0 4px 32px rgba(0,0,0,0.5);
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="Shop.html">Shop</a>
+    <a href="theherd.html">The Herd</a>
+    <a href="about.html">About Us</a>
+    <a href="products.html">Products</a>
+    <a href="contact.html">Contact Us</a>
+  </nav>
+
+  <!-- Cart Icon Button -->
+  <button id="cart-icon-btn">
+    🛒
+    <span id="cart-count">0</span>
+  </button>
+
+  <div class="shop">
+    <!-- Product 1 -->
+    <div class="product" onclick="openModal('modal-baby9')">
+      <img src="pictures/Baby9.jpg" alt="Baby #9">
+      <h3>Baby #9</h3>
+    </div>
+    <!-- Product 2 -->
+    <div class="product" onclick="openModal('modal-baby7')">
+      <img src="pictures/Baby7.jpg" alt="Baby #7">
+      <h3>Baby #7</h3>
+    </div>
+    <!-- Product 3 -->
+    <div class="product" onclick="openModal('modal-baby2')">
+      <img src="pictures/Baby2.jpg" alt="Baby #2">
+      <h3>Baby #2 "Winston"</h3>
+    </div>
+  </div>
+
+  <!-- Modal for Baby #9 -->
+  <div class="modal" id="modal-baby9">
+    <div class="modal-content">
+      <button class="close-modal" onclick="closeModal('modal-baby9')">&times;</button>
+      <div class="modal-images">
+        <img src="pictures/Baby9.jpg" alt="Baby #9" onclick="enlargeImage(this.src, this.alt)">
+        <img src="pictures/Baby9-side.jpg" alt="Baby #9 Side" onclick="enlargeImage(this.src, this.alt)">
+      </div>
+      <div class="modal-details">
+        <h3>Baby #9</h3>
+        <p><strong>Price:</strong> $75.00</p>
+        <p>
+          <strong>Description:</strong><br>
+          This adorable lamb is playful, healthy, and ready for a new home. Raised on pasture with lots of love. Vaccinated and weaned. Contact us for more details or to schedule a visit!
+        </p>
+        <button class="buy-button" onclick="addToCart('Baby #9', 75.00, '', 1); closeModal('modal-baby9');">Add to Cart</button>
+      </div>
+    </div>
+  </div>
+  <!-- Modal for Baby #7 -->
+  <div class="modal" id="modal-baby7">
+    <div class="modal-content">
+      <button class="close-modal" onclick="closeModal('modal-baby7')">&times;</button>
+      <div class="modal-images">
+        <img src="pictures/Baby7.jpg" alt="Baby #7" onclick="enlargeImage(this.src, this.alt)">
+      </div>
+      <div class="modal-details">
+        <h3>Baby #7</h3>
+        <p><strong>Price:</strong> $75.00</p>
+        <p>
+          <strong>Description:</strong><br>
+          Sweet and gentle, Baby #7 loves to be around people and other animals. Perfect for families or hobby farms. Up-to-date on shots and ready for pickup.
+        </p>
+        <button class="buy-button" onclick="addToCart('Baby #7', 75.00, '', 1); closeModal('modal-baby7');">Add to Cart</button>
+      </div>
+    </div>
+  </div>
+  <!-- Modal for Baby #2 -->
+  <div class="modal" id="modal-baby2">
+    <div class="modal-content">
+      <button class="close-modal" onclick="closeModal('modal-baby2')">&times;</button>
+      <div class="modal-images">
+        <img src="pictures/Baby2.jpg" alt="Baby #2" onclick="enlargeImage(this.src, this.alt)">
+      </div>
+      <div class="modal-details">
+        <h3>Baby #2</h3>
+        <h3 "Winston">Winston</h3>
+        <p><strong>Price:</strong> $100.00</p>
+        <p>
+          <strong>Description:</strong><br>
+          Winston is a curious and energetic buckling, raised with his mom and healthy. he is 1/2 Nigerian Dwarf, 1/2 Pygmy.  A great addition to your herd!
+        </p>
+        <button class="buy-button" onclick="addToCart('Baby #2', 50.00, '', 1); closeModal('modal-baby2');">Add to Cart</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cart Modal -->
+  <div id="cart-modal">
+    <div id="cart">
+      <button onclick="closeCart()" style="position:absolute; top:10px; right:15px; font-size:24px; background:none; border:none; cursor:pointer;">&times;</button>
+      <h2>Your Cart</h2>
+      <table id="cart-table">
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>Size</th>
+            <th>Qty</th>
+            <th>Price</th>
+            <th>Remove</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr id="empty-cart-message"><td colspan="5">Your cart is empty.</td></tr>
+        </tbody>
+      </table>
+      <div id="cart-total"></div>
+      <div class="cart-actions">
+        <!-- Payment Options -->
+        <form id="paypal-cart-form" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" style="display:inline;">
+          <input type="hidden" name="cmd" value="_cart">
+          <input type="hidden" name="upload" value="1">
+          <input type="hidden" name="business" value="tnjparry@yahoo.com">
+          <button type="submit" class="buy-button">Pay with PayPal</button>
+        </form>
+        <a href="https://venmo.com/YourVenmoUsername" target="_blank" class="venmo-button">Pay with Venmo</a>
+        <button type="button" class="buy-button" style="background-color:#888;" onclick="openCashModal()">Local Pickup (Cash Only)</button>
+      </div>
+      <div style="margin-top:10px; font-size:14px; color:#333;">
+        <strong>Contact:</strong> parryfarmsllc@yahoo.com<br>
+        <strong>Phone:</strong> (406) 594-1695
+      </div>
+    </div>
+  </div>
+
+  <!-- Cash at Pickup Modal -->
+  <div id="cashModal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.5); z-index:3500; align-items:center; justify-content:center;">
+    <div style="background:#fff; padding:30px; border-radius:10px; max-width:350px; margin:auto; position:relative;">
+      <button onclick="document.getElementById('cashModal').style.display='none'" style="position:absolute; top:10px; right:10px;">&times;</button>
+      <h3>Cash at Pickup</h3>
+      <form action="cash-order.php" method="post">
+        <div id="cash-cart-summary" style="font-size:14px; margin-bottom:10px;"></div>
+        <input type="hidden" name="cart" id="modal-cart-data">
+        <label for="name">Your Name:</label><br>
+        <input type="text" name="name" id="name" required><br>
+        <label for="email">Your Email:</label><br>
+        <input type="email" name="email" id="email" required><br>
+        <label for="phone">Your Phone:</label><br>
+        <input type="text" name="phone" id="phone" required><br>
+        <button type="submit" class="buy-button" style="margin-top:10px;">Send Order</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Lightbox Overlay for Enlarged Images -->
+  <div id="lightbox-overlay" onclick="closeLightbox()">
+    <img id="lightbox-img" src="" alt="Enlarged image">
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Parry Farms LLC. All rights reserved.</p>
+    <p>Website by Tara Parry</p>
+  </footer>
+
+  <script>
+    // Modal logic
+    function openModal(id) {
+      document.getElementById(id).style.display = 'flex';
+    }
+    function closeModal(id) {
+      document.getElementById(id).style.display = 'none';
+    }
+    document.querySelectorAll('.modal').forEach(modal => {
+      modal.addEventListener('click', function(e) {
+        if (e.target === modal) modal.style.display = 'none';
+      });
+    });
+
+    // Cart Modal logic
+    document.getElementById('cart-icon-btn').onclick = function() {
+      document.getElementById('cart-modal').style.display = 'flex';
+    };
+    function closeCart() {
+      document.getElementById('cart-modal').style.display = 'none';
+    }
+    document.getElementById('cart-modal').addEventListener('click', function(e) {
+      if (e.target === this) closeCart();
+    });
+
+    // Cart logic
+    let cart = [];
+    function addToCart(product, price, size, quantity) {
+      quantity = parseInt(quantity);
+      let found = cart.find(item => item.product === product && item.size === size);
+      if (found) {
+        found.quantity += quantity;
+      } else {
+        cart.push({ product, price, size, quantity });
+      }
+      renderCart();
+    }
+    function removeFromCart(index) {
+      cart.splice(index, 1);
+      renderCart();
+    }
+    function renderCart() {
+      const tbody = document.querySelector('#cart-table tbody');
+      tbody.innerHTML = '';
+      let total = 0;
+      if (cart.length === 0) {
+        tbody.innerHTML = '<tr id="empty-cart-message"><td colspan="5">Your cart is empty.</td></tr>';
+      } else {
+        cart.forEach((item, idx) => {
+          let row = document.createElement('tr');
+          row.innerHTML = `
+            <td>${item.product}</td>
+            <td>${item.size}</td>
+            <td>${item.quantity}</td>
+            <td>$${(item.price * item.quantity).toFixed(2)}</td>
+            <td><button class="remove-btn" onclick="removeFromCart(${idx})">&times;</button></td>
+          `;
+          tbody.appendChild(row);
+          total += item.price * item.quantity;
+        });
+      }
+      document.getElementById('cart-total').textContent = 'Total: $' + total.toFixed(2);
+      updateCartCount();
+
+      // Update PayPal cart form
+      const paypalForm = document.getElementById('paypal-cart-form');
+      Array.from(paypalForm.querySelectorAll('input[name^="item_name"],input[name^="amount"],input[name^="quantity"]')).forEach(e => e.remove());
+      cart.forEach((item, i) => {
+        let idx = i + 1;
+        paypalForm.insertAdjacentHTML('beforeend', `
+          <input type="hidden" name="item_name_${idx}" value="${item.product} (${item.size})">
+          <input type="hidden" name="amount_${idx}" value="${item.price}">
+          <input type="hidden" name="quantity_${idx}" value="${item.quantity}">
+        `);
+      });
+    }
+    // Cart icon count
+    function updateCartCount() {
+      const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+      const countSpan = document.getElementById('cart-count');
+      if (count > 0) {
+        countSpan.textContent = count;
+        countSpan.style.display = 'inline-block';
+      } else {
+        countSpan.style.display = 'none';
+      }
+    }
+
+    // Cash modal logic
+    function openCashModal() {
+      let summary = '';
+      let total = 0;
+      cart.forEach(item => {
+        summary += `${item.product} (${item.size}) x${item.quantity} - $${(item.price * item.quantity).toFixed(2)}<br>`;
+        total += item.price * item.quantity;
+      });
+      summary += `<strong>Total: $${total.toFixed(2)}</strong>`;
+      document.getElementById('cash-cart-summary').innerHTML = summary;
+      document.getElementById('modal-cart-data').value = JSON.stringify(cart);
+      document.getElementById('cashModal').style.display = 'flex';
+    }
+
+    // Lightbox logic for enlarged images
+    function enlargeImage(src, alt) {
+      document.getElementById('lightbox-img').src = src;
+      document.getElementById('lightbox-img').alt = alt || '';
+      document.getElementById('lightbox-overlay').style.display = 'flex';
+    }
+    function closeLightbox() {
+      document.getElementById('lightbox-overlay').style.display = 'none';
+    }
+  </script>
+</body>
+</html>

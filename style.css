@@ -1,0 +1,267 @@
+/* General body styling */
+body, header {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  background: linear-gradient(to bottom, #3a6209, #37a305); /* Gradient from light green to dark green */
+  font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+p {
+  line-height: 1.5
+}
+
+.sidebar h2 {
+  text-align: center; /* Centers the text horizontally */
+  font-size: 36px; /* Makes the text larger */
+  margin-top: 0; /* Removes default margin at the top */
+  margin-bottom: 20px; /* Adds spacing below the heading */
+}
+
+.content h2 {
+  text-align: center; /* Centers the h2 text horizontally */
+  font-size: 28px; /* Optional: Adjusts the font size */
+  margin-top: 0; /* Optional: Removes extra margin at the top */
+  margin-bottom: 20px; /* Optional: Adds spacing below the heading */
+}
+
+.content img:nth-child(1) {
+  transform: rotate(-5deg); /* Slight counterclockwise tilt */
+}
+
+.content img:nth-child(2) {
+  transform: rotate(5deg); /* Slight clockwise tilt */
+}
+
+.content img:nth-child(3) {
+  transform: rotate(-10deg); /* More counterclockwise tilt */
+}
+
+.content img:nth-child(4) {
+  transform: rotate(10deg); /* More clockwise tilt */
+}
+
+.content img:nth-child(5) {
+  transform: rotate(-7deg); /* Slight counterclockwise tilt */
+}
+
+.content img:nth-child(6) {
+  transform: rotate(7deg); /* Slight clockwise tilt */
+}
+
+.content img:nth-child(7) {
+  transform: rotate(-3deg); /* Very slight counterclockwise tilt */
+}
+
+.content img:nth-child(8) {
+  transform: rotate(3deg); /* Very slight clockwise tilt */
+}
+
+.gallery {
+  text-align: center; /* Centers the text and images */
+}
+
+.gallery img {
+  display: inline-block; /* Ensures images are displayed inline */
+  margin: 10px; /* Adds spacing between images */
+
+}
+
+img.bounce {
+  animation: bounceAway 1s ease-in forwards; /* Apply the bounce animation */
+}
+
+.content p {
+  display: flex; /* Enables flexbox layout */
+  flex-wrap: wrap; /* Allows items to wrap to the next row */
+  justify-content: center; /* Centers the images in the row */
+  gap: 10px; /* Adds spacing between images */
+}
+
+
+.content img:hover {
+  transform: scale(1.2); /* Enlarges the image by 20% on hover */
+}
+
+table {
+  width: 100%; /* Makes the table take up the full width of the box */
+  border-collapse: collapse; /* Removes spacing between table cells */
+  margin-top: 20px; /* Adds spacing above the table */
+}
+
+th, td {
+  border: 1px solid #ccc; /* Adds a border around table cells */
+  padding: 10px; /* Adds padding inside table cells */
+  text-align: left; /* Aligns text to the left */
+}
+
+th, td {
+  border-bottom: 1px solid #ccc; /* Adds a line under each row */
+  padding: 10px; /* Adds padding inside table cells */
+  text-align: left; /* Aligns text to the left */
+}
+
+th {
+  background-color: #3a6209; /* Adds a green background to header cells */
+  color: white; /* Makes header text white */
+  border-bottom: 2px solid #ccc; /* Makes the header row's bottom border thicker */
+}
+
+tr:nth-child(even) {
+  background-color: #3a6209; /* Adds a light background to even rows */
+}
+
+/* Push the footer to the bottom */
+
+
+/* Header and title styling */
+
+/* Header styling */
+
+header {
+  text-align: center;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.2); /* Optional: Adds a semi-transparent background to the header */
+}
+
+header h1 {
+text-align: center;
+font-family: algerian, sans-serif;
+font-size: 36px;
+margin: 20px 0;
+color: white;
+}
+
+h1 {
+  margin: 0;
+  padding: 20px 0;
+  font-family: 'Algerian', sans-serif;
+  text-align: center;
+}
+
+
+
+@keyframes bounceAway {
+  0% {
+    transform: translateY(0); /* Start at the original position */
+  }
+  50% {
+    transform: translateY(-50px); /* Move up by 50px */
+  }
+  100% {
+    transform: translateY(-500px) scale(0); /* Move far up and shrink */
+    opacity: 0; /* Fade out */
+  }
+}
+     /* Navigation bar styling */
+
+     nav {
+      display: flex;
+      justify-content: center; /* Centers the navigation links */
+      background-color: #3a6209; /* Green background for the nav bar */
+      padding: 10px;
+    }
+    
+    nav a {
+      text-decoration: none; /* Removes underline from links */
+      color: white; /* White text color */
+      padding: 10px 20px; /* Adds padding inside the links */
+      margin: 0 5px; /* Adds spacing between links */
+      border-radius: 5px; /* Rounds the corners of the links */
+      transition: background-color 0.3s ease; /* Smooth hover effect */
+    }
+
+    .right-box {
+      font-size: 14px; /* Adjusts the font size for all text in Box 2 */
+    }
+    
+    .right-box h3 {
+      font-size: 16px; /* Adjusts the font size for the heading in Box 2 */
+    }
+    
+    .right-box table {
+      font-size: 12px; /* Adjusts the font size for the table content */
+    }
+    
+    .right-box table th, 
+    .right-box table td {
+      padding: 8px; /* Adjusts padding inside table cells for better spacing */
+    }
+
+    /*shop buttons*/
+
+    .buy-button {
+      background-color: #3a6209;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      margin: 5px;
+      transition: background-color 0.3s ease;
+    }
+    
+    .buy-button:hover {
+      background-color: #2e4f07;
+    }
+
+    .venmo-button {
+  background-color: #3d95ce;
+  margin-top: 5px;
+}
+.venmo-button:hover {
+  background-color: #1b5e85;
+}
+
+.product {
+  display: inline-block;
+  text-align: center;
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  width: 250px;
+  height: 480px; /* Fixed height for all boxes */
+  box-sizing: border-box;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  vertical-align: top;
+  overflow: hidden;
+}
+
+.product img {
+  width: 100%;
+  height: 150px; /* Fixed height for images */
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  background: #eee;
+}
+
+.payment-options {
+  margin-top: 10px;
+}
+
+.venmo-button {
+  background-color: #3d95ce;
+  margin-top: 5px;
+}
+.venmo-button:hover {
+  background-color: #1b5e85;
+} 
+
+
+/* Footer styling */
+footer {
+  background-color: rgba(0, 0, 0, 0.2);
+  text-align: center;
+  padding: 10px;
+  color: #fff;
+  margin-top: auto;
+}
